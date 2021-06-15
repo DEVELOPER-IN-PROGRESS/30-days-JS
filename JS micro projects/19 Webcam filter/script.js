@@ -26,6 +26,24 @@ function paintToCanvas(){
     canvas.width = width ;
     canvas.height = height ; 
 
+return  setInterval(  ()=>{
+      ctx.drawImage(video, 0, 0 , width , height);
+    } , 1699);
+
 }
 
-paintToCanvas();
+function takePhoto(){
+    snap.currentTime = 0 
+    snap.play();
+
+    const data = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = data ;
+    link.setAttribute('download', 'handsome')
+    link.innerHTML = `<img src=${data} alt='Boba Fett' />`;
+    strip.insertBefore(link , strip.firstChild);
+
+}
+
+// for automatically running paintToCanvas rather can calling from browser 
+video.addEventListener('canplay' , paintToCanvas)
