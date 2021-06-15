@@ -28,8 +28,25 @@ function paintToCanvas(){
 
 return  setInterval(  ()=>{
       ctx.drawImage(video, 0, 0 , width , height);
+      let pixels = ctx.getImageData(0,0,width ,height);
+      pixels= redEffect(pixels);
+
+      ctx.putImageData(pixels,0,0);
     } , 1699);
 
+}
+
+function redEffect(pixels){
+  for(let i =0 ;  i < pixels.data.length ; i = i+4 ){
+    //   pixels[i]
+    //   pixels[i+1]
+    //   pixels[i+2]
+
+      pixels.data[i + 0] = pixels.data[i + 0] + 200; // RED
+      pixels.data[i + 1] = pixels.data[i + 1] - 50; // GREEN
+      pixels.data[i + 2] = pixels.data[i + 2] * 0.5; // Blue
+  }
+  return pixels ;
 }
 
 function takePhoto(){
