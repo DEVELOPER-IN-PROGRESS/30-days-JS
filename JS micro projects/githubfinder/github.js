@@ -1,7 +1,7 @@
 class Github {
 constructor(){
-    this.client_id = 'your client app id here'
-    this.client_secret = 'your client secret key here'
+    this.client_id = 'd8f2d19100a689a74c01'
+    this.client_secret = 'fde4363d7ee7d36cfa30804136ab4a433f66973e'
     this.repos_count = 9 ;
     this.repos_sort = 'created: asc' ;
 }
