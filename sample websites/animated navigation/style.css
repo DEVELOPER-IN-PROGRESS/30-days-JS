@@ -80,7 +80,7 @@ body {
 
   nav li a:hover::before {  
     opacity: 1;
-  }
+  } 
 
 
    nav li:nth-of-type(1) {
@@ -115,8 +115,28 @@ body {
   cursor: pointer;
 }
 
+.bar1,
+.bar2,
+.bar3 {
+  width :35px;
+  height: 2px ;
+  margin: 8px 0 ; 
+  transition: 0.4s;
+}
 
+/* Rotate first 1 */
+.change .bar1 {
+  transform: rotate(-45deg) translate(-7px, 8px); 
+}
 
+.change .bar2 {
+   opacity: 0;
+}
+
+.change .bar3 {
+  transform: rotate(45deg) translate(-6px, -8px);
+  
+}
 /* --- Sections ------------------------------------ */
 
 section {
