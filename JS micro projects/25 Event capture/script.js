@@ -8,11 +8,11 @@ function logText(e){
 }
 
 divs.forEach( div=> {
-    div.addEventListener('click' ,logText, {capture : false , once:true});
+    div.addEventListener('click' ,logText, {capture : false , once:false});
 }) ;
 
-button.addEventListener('click' , ()=>{console.log('BUtton CLicked ')} ,{once: true})
+button.addEventListener('click' , ()=>{console.log('BUtton CLicked ')} )
 //the capture happens from a top down approach whereas the events are fired in reverse order
 // capture default is false
 
-//setting once: true will remove event listner after  event is listened
+//setting once: true will remove event listner after  event is listened  , default is false 
