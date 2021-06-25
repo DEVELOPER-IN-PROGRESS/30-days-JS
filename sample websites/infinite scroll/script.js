@@ -45,5 +45,14 @@ const photosArray = [] ;
      }
  }
 
+ window.addEventListener('scroll' , ()=> {
+ if( window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000){
+     getPhotos();
+     console.log('load more photos');
+ }
+
+
+ })
+
  //onLoad
- getPhotos();   
+ //getPhotos();   
