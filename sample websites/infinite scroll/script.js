@@ -1,10 +1,26 @@
-const count = 5; 
+const count = 1; 
 const apiKey ="tT3XuOJisJX1tBSNnbMK8Doa4NVpfij5ZhspWJW1YzTk"
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}` ;
 const imageContainer = document.getElementById('image-container')
 const loader = document.getElementById('loader')
 
+let ready = false ;
+let imagesLoaded = 0 ;
+let totalImages = 15 ;
+
 const photosArray = [] ;
+
+  //check whether image loaded 
+  function imageLoaded() {
+     console.log('image loaded') ;
+     imagesLoaded++ ;
+     if(imagesLoaded === totalImages){
+         ready = true ;
+         loader.hidden = true ;
+         console.log('ready = ' ,ready) ;
+     }
+
+  }
 
   //Helper function for set attributes 
   function setAttributes(element , attributes) {
@@ -16,6 +32,9 @@ const photosArray = [] ;
 
 // Create elements for displaying phot and its attributes 
  function displayPhotos(){
+     imagesLoaded = 0 ;
+     totalImages = photosArray.length ;
+     console.log('total Images' , totalImages) ;
      // ForEach
       photosArray.forEach( (photo) => {
         //create <a>
@@ -27,9 +46,10 @@ const photosArray = [] ;
            const img =document.createElement('img');
         //img.setAttribute('src', photo.urls.regular); img.setAttribute('alt', photo.descripton.alt_description);   img.setAttribute('title' , photo.descripton.alt_description);
         setAttributes(img, {src:photo.urls.regular , alt:photo.descripton.alt_description , title:photo.descripton.alt_description ,}) ;
-        
+    
+   img.addEventListener('load', imageLoaded)
         // put image in image container
-           imageContainer.appendChild
+           imageContainer.appendChild(item);
 
       })
  }
@@ -46,8 +66,9 @@ const photosArray = [] ;
  }
 
  window.addEventListener('scroll' , ()=> {
- if( window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000){
-     getPhotos();
+ if( window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready ){
+     ready = false ; 
+    getPhotos();
      console.log('load more photos');
  }
 
