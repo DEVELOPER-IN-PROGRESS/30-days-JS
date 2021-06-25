@@ -1,0 +1,48 @@
+html{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: 'Big Shoulders Stencil Display', cursive , sans-serif;
+    background:whitesmoke ;
+}
+
+h1{
+    text-align: center;
+    margin: 25px 0px 15px 0px ;
+    letter-spacing: 5px;
+}
+.loader{
+    position: fixed;
+    top:0 ; 
+    bottom: 0 ;
+    right:0;
+    left: 0 ;
+    background: rgba(255,255,255, 0.8);
+}
+
+.loader img {
+    position: fixed;
+    top:50% ;
+    left:50% ;
+    transform: translate(-50%, -50%);
+
+}
+
+.image-container {
+    margin :10px 30% ;
+}
+
+.image-container img {
+    width: 100%; 
+    margin-top: 5px;
+}
+
+/* MEdia query  */
+@media screen and (max-width:600px ){
+    h1{font-size: 17px;}
+    
+    .image-container {
+        margin :10px 8px ;
+    }
+}
