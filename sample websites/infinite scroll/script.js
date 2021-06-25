@@ -1,5 +1,5 @@
-const count = 1; 
-const apiKey ="tT3XuOJisJX1tBSNnbMK8Doa4NVpfij5ZhspWJW1YzTk"
+const  count = 3; 
+const apiKey ="T3XuOJisJX1tBSNnbMK8Doa4NVpfij5ZhspWJW1YzTk"
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}` ;
 const imageContainer = document.getElementById('image-container')
 const loader = document.getElementById('loader')
@@ -17,6 +17,7 @@ const photosArray = [] ;
      if(imagesLoaded === totalImages){
          ready = true ;
          loader.hidden = true ;
+         count = 10 ; 
          console.log('ready = ' ,ready) ;
      }
 
