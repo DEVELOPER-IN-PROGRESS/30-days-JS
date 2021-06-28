@@ -23,6 +23,7 @@ function complete(){
 
 //Show new quotes
 function newQuote(){
+    loading();
     //pick random quote
     const quote  = apiQuotes[Math.floor(Math.random() * apiQuotes.length)] ;
     //check if author field blank 
@@ -41,10 +42,12 @@ function newQuote(){
        }
     
     quoteText.textContent = quote.text ; 
+    complete();
 
 }
 
 async function getQuotes(){
+    loading();
     const apiUrl = 'https://type.fit/api/quotes' ;
 
     try{
@@ -66,6 +69,4 @@ newQuoteBtn.addEventListener('click', newQuote);
 twitterBtn.addEventListener('click' , tweetQuote) ;
 
 // on Load
-//getQuotes();
-
-loading();
+getQuotes();
