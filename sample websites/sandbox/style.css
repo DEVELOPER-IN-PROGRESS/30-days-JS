@@ -1,0 +1,64 @@
+html{
+    box-sizing: border-box;
+    scroll-behavior:smooth ;    
+}
+
+body{
+    margin:0;
+    padding: 0;
+}
+
+#s1{
+    background-color: rgb(128, 9, 144);
+    min-height:100vh;
+    align-items: center;
+}
+h1{
+    font-size: 7.5em;
+    padding: 0;
+    margin: 0;
+}
+#title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.img-container{
+    margin:auto ;
+    z-index: 10;
+}
+
+.sachet{
+    width:50vw;
+    margin: auto;
+    display: block;
+    z-index: 10;
+}
+
+#b1{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+    margin-left: 30vw;
+}
+
+#b1:hover{
+    color: red;
+}
+
+
+
+#s2{
+    background-color: black;
+    height: 80vh;
+}
+
+#s3{
+    background-color: mistyrose;
+    height: 100vh;
+}
