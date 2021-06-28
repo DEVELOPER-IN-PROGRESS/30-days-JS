@@ -5,7 +5,19 @@ const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
 const newQuoteBtn = document.getElementById('new-quote');
 const twitterBtn = document.getElementById('twitter');
+const loader = document.getElementById('loader');
 
+//show loader 
+function loading(){
+    loader.hidden = false ; 
+    quoteContainer.hidden = true ;
+
+}
+
+function complete(){
+    quoteContainer.hidden = false ; 
+    loader.hidden = true ; 
+}
 
 
 
@@ -54,4 +66,6 @@ newQuoteBtn.addEventListener('click', newQuote);
 twitterBtn.addEventListener('click' , tweetQuote) ;
 
 // on Load
-getQuotes();
+//getQuotes();
+
+loading();
