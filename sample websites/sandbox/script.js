@@ -3,19 +3,15 @@ const arrow = document.getElementById('b1');
 
 
 function imageRotate(e){
-
-// console.log(window.scrollY)
-
-console.log(window.scrollY)
-    if(window.scrollY < 251 ){
-        image.style.transform= `rotate(-${Math.round(window.scrollY/2.75)}deg)` 
+console.log(Math.round(window.scrollY))
+    if(window.scrollY < 278 ){
+        image.style.transform= `rotate(-${(Math.round(window.scrollY))/3}deg)` 
         image.style.position = 'fixed' ;
     }
     else {
-        image.style.marginTop = '10px'; 
-        image.style.position= ' ' ;
+        image.style.position= 'static' ;
     }
-     //console.log(Math.round(window.scrollY/10));
+    //  console.log(Math.round(window.scrollY/10));
 }
 
 window.addEventListener('scroll', imageRotate);
