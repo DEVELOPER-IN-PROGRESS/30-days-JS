@@ -68,7 +68,7 @@ h3 {
   background: #242323;
   border-radius: 5px;
   height: 100%;
-  width: 0%;
+  width: 0px;
   transition: width 0.1s linear;
 }
 
