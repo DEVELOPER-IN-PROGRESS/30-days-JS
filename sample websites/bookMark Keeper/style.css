@@ -73,6 +73,8 @@ a:active {
 float: right;
 cursor: pointer;
 z-index: 2;
+color: white;
+padding: 10px;
 }
 .name img {
   height: 20px;
