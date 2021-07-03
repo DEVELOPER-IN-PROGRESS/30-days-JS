@@ -40,6 +40,8 @@ function validate(nameValue , urlValue){
 }
 
 function buildBookmarks(){
+    //Remove all bookmarks in beginnig 
+    bookmarksContainer.textContent= '' ;
     // Build Items 
     bookmarks.forEach( (bookmark)=>{
         const { name ,url } = bookmark ;
@@ -69,7 +71,7 @@ function buildBookmarks(){
    });
 }
 
-//Fetch Bokmarks 
+//Fetch Bookmarks 
 function fetchBookmarks(){
  //gEt bookmarks from local storage if it is present
  if (localStorage.getItem('bookmarks')){
@@ -83,6 +85,19 @@ function fetchBookmarks(){
    ];
    localStorage.setItem('bookmarks' ,JSON.stringify(bookmarks));
  }
+ buildBookmarks();
+}
+
+//Delete bookmarks 
+function deleteBookmark(url){
+    bookmarks.forEach (  (bookmark,i)=> {
+       if(bookmark.url === url ){
+           bookmarks.splice(i, 1 );
+       }
+    }) ;
+    //UPdate local storage for changes
+    localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
+    fetchBookmarks();
 }
 
 
@@ -107,7 +122,7 @@ if(!validate(nameValue , urlValue)){
      url: urlValue ,
  }
  bookmarks.push(bookmark);
- localStorage.setItem('bokmarks' , JSON.stringify(bookmarks));
+ localStorage.setItem('bookmarks' , JSON.stringify(bookmarks));
  fetchBookmarks() ;
  bookmarkForm.reset();
  websiteNameEL.focus();
