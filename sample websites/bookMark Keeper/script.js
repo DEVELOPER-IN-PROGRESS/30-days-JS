@@ -6,6 +6,8 @@ const websiteNameEL =document.getElementById('website-name');;
 const websiteUrlEl = document.getElementById('website-url');
 const bookmarksContainer = document.getElementById('bookmarks-container');;
 
+let bookmarks = []; 
+
 // Show modal focus on input    
 function showModal() {
     modal.classList.add('show-modal');
@@ -28,7 +30,7 @@ function validate(nameValue , urlValue){
         return false ;
     }
     if(urlValue.match(regex)){
-        alert('match');
+        
     }
     if(!urlValue.match(regex)){
         alert('Enter valid web address');
@@ -36,6 +38,55 @@ function validate(nameValue , urlValue){
     }
     return true ; 
 }
+
+function buildBookmarks(){
+    // Build Items 
+    bookmarks.forEach( (bookmark)=>{
+        const { name ,url } = bookmark ;
+        const item = document.createElement('div');
+        item.classList.add('item');
+        //Close Icon 
+        const closeIcon  = document.createElement('i');
+        closeIcon.classList.add('fas' , 'fa-times');
+        closeIcon.setAttribute('title' ,'Delete Bookmark');
+        closeIcon.setAttribute('onclick' ,`deleteBookmark('${url}')`);
+        //Favicon /Link 
+        const linkInfo = document.createElement('div');
+        linkInfo.classList.add('name');
+        const favicon  = document.createElement('img' );
+        favicon.setAttribute('src' , `https://s2.googleusercontent.com/s2/favicons?
+        domains=${url}`) ;
+        favicon.setAttribute('alt' ,'favicon');
+        // Link 
+        const link = document.createElement('a');
+        link.setAttribute('href' ,`${url}`);
+        link.setAttribute('target','_blank'); 
+        link.textContent =name ;
+        // Append to bookmark container 
+        linkInfo.append(favicon, link);
+        item.append(closeIcon ,linkInfo);
+        bookmarksContainer .appendChild(item);   
+   });
+}
+
+//Fetch Bokmarks 
+function fetchBookmarks(){
+ //gEt bookmarks from local storage if it is present
+ if (localStorage.getItem('bookmarks')){
+     bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+ }else{
+   bookmarks = [
+       {
+           name: 'duck go' ,
+           url : 'https://www.duckduckgo.com',
+       } ,
+   ];
+   localStorage.setItem('bookmarks' ,JSON.stringify(bookmarks));
+ }
+}
+
+
+
 
 //handle data from form 
 function storeBookmark(e){
@@ -50,8 +101,20 @@ if(!urlValue.includes('http://','https://')){
 if(!validate(nameValue , urlValue)){
     return false;
 }
+
+ const bookmark = {
+     name: nameValue ,
+     url: urlValue ,
+ }
+ bookmarks.push(bookmark);
+ localStorage.setItem('bokmarks' , JSON.stringify(bookmarks));
+ fetchBookmarks() ;
+ bookmarkForm.reset();
+ websiteNameEL.focus();
 }
 
 
 //Event  listener
 bookmarkForm.addEventListener('submit' ,storeBookmark) ;
+
+fetchBookmarks();
