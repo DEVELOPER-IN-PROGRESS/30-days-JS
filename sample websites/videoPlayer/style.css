@@ -44,7 +44,6 @@ video {
 .show-controls {
   width: 100%;
   height: 30%;
-  background: dodgerblue;
   z-index: 2;
   position: absolute;
   bottom: 0;
@@ -62,10 +61,14 @@ video {
   z-index: 5;
   display: flex;
   justify-content: space-between;
-
+ opacity:0 ;
+ transition: all 0.5s ease-out 2s;
 }
 
-
+.show-controls:hover .controls-container{
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}
 
 .control-group {
   width: 100%;
@@ -85,17 +88,21 @@ video {
 
 /* Progress Bar */
 .progress-range {
-
+  width: calc(100% - 30px);
+  background: #777;
+  height: 8px;
   margin: auto;
   border-radius: 10px;
   position: absolute;
   left: 15px;
   top: 15px;
   cursor: pointer;
-
+  transition: eight 0.2s ease-in-out;
 }
 
-
+.progress-range:hover {
+  height: 10px;
+}
 
 .progress-bar {
   background: var(--primary-color);
@@ -171,7 +178,8 @@ video {
 
 
 select {
-
+  background: transparent;
+ cursor: pointer;
   color: var(--font-color);
   border: none;
   font-size: 18px;
@@ -180,7 +188,9 @@ select {
   border-radius: 5px;
 }
 
-
+select:focus {
+  outline: none;
+}
 
 select > option {
   background: rgba(0, 0, 0, 0.9);
@@ -211,7 +221,7 @@ select > option {
 @media screen and (max-width: 600px) {
    .player{
      min-width: 0;
-     max-width: 95vw;
+     max-width: 95vw ;
    }
 
   .fas {
