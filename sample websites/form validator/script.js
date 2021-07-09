@@ -29,7 +29,6 @@ function validateForm(){
         password2El.style.borderColor = 'red';
         messageContainer.style.borderColor = 'red';
         return ;
-
     }
     if( isvalid  && passwordsMatch) {
         message.textContent = 'Successful Registration' ;
@@ -37,11 +36,25 @@ function validateForm(){
         messageContainer.style.borderColor = 'green';
     }
 }
+function storeFormData(){
+    const user = {
+        name: form.name.value ,
+        phone: form.phone.value ,
+        email: form.email.value ,
+        website: form.website.value ,
+        password: form.password.value , 
+    } ;
+    console.log(user);
+}
 
 
 function processFormdata(e){
     e.preventDefault();
     validateForm() ;
+    //Submit data if valid
+       if(isvalid && passwordsMatch) {
+           storeFormData();
+       }
 }
 
 //Event Listener
