@@ -16,7 +16,7 @@ const computerScissors = document.getElementById('computerScissors');
 const computerLizard = document.getElementById('computerLizard');
 const computerSpock = document.getElementById('computerSpock');
 
-const allGameIcons = document.getElementById('.far');
+const allGameIcons = document.querySelectorAll('.far');
 
 
 const choices = {
@@ -27,6 +27,108 @@ const choices = {
   spock: { name: 'Spock', defeats: ['scissors', 'rock'] },
 };
 
+let computerChoice = '' ;
+// Reset al selected icons
+function resetSelected() {
+  allGameIcons.forEach( (icon) => {
+    icon.classList.remove('selected');
+  })
+}
+
+function computerRandomChoice() {
+  const computerChoiceNumber = Math.random() ;
+   if (computerChoiceNumber < 0.2) {
+     computerChoice ='rock' ;
+   }
+  else if (computerChoiceNumber <= 0.4) {
+    computerChoice ='paper' ;
+  }
+ else if (computerChoiceNumber <= 0.6) {
+    computerChoice ='scissors' ;
+  }
+ else if (computerChoiceNumber <= 0.8) {
+    computerChoice ='lizard' ;
+  }
+  else  {
+    computerChoice ='spock' ;
+  }
+}
+
+//Add 'selected' styling & computerchoice 
+
+
+function displaycomputerChoice(){
+
+  switch(computerChoice){
+   case 'rock' :
+     computerRock.classList.add('selected');
+     computerChoiceEl.textContent = ' --- Rock';
+     break;
+
+   case 'paper' :
+     computerPaper.classList.add('selected');
+     computerChoiceEl.textContent = ' --- Paper';
+     break;
+     
+   case 'scissors' :
+     computerScissors.classList.add('selected');
+     computerChoiceEl.textContent = ' --- Scissors';
+     break;
+    
+      
+   case 'spock' :
+    computerSpock.classList.add('selected');
+    computerChoiceEl.textContent = ' --- Spock';
+    break;
+   
+    
+   case 'lizard' :
+     computerLizard.classList.add('selected');
+     computerChoiceEl.textContent = ' --- Lizard';
+     break;
+    
+ }
+}
+
+
+
+//Call functions to process turn 
+function checkResult(){
+  resetSelected();
+  computerRandomChoice();
+  displaycomputerChoice();
+}
+
 function select(playerChoice){
-  console.log(playerChoice);
+  checkResult();
+ // add 'selected'  styling  & playerChoice
+ switch(playerChoice){
+   case 'rock' :
+     playerRock.classList.add('selected');
+     playerChoiceEl.textContent = ' --- Rock';
+     break;
+
+   case 'paper' :
+     playerPaper.classList.add('selected');
+     playerChoiceEl.textContent = ' --- Paper';
+     break;
+     
+   case 'scissors' :
+     playerScissors.classList.add('selected');
+     playerChoiceEl.textContent = ' --- Scissors';
+     break;
+    
+      
+   case 'spock' :
+    playerSpock.classList.add('selected');
+    playerChoiceEl.textContent = ' --- Spock';
+    break;
+   
+    
+   case 'lizard' :
+     playerLizard.classList.add('selected');
+     playerChoiceEl.textContent = ' --- Lizard';
+     break;
+    
+ }
 }
