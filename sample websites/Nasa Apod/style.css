@@ -63,7 +63,7 @@ body {
 }
 /* Images Container */
 .images-container {
-
+  width: 800px;
   margin-top: 50px;
 }
 
@@ -79,6 +79,11 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+.card-img-top{
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0px 0px ;
+}
 
 
 .card-body {
@@ -88,6 +93,10 @@ body {
 .card-title {
   margin: 10px auto;
   font-size: 24px;
+}
+
+.save-confirmed{
+  right: 25px;
 }
 
 
@@ -114,12 +123,16 @@ body {
   body {
     line-height: 1.4rem;
     font-size: 0.9rem;
-
+    text-align: justify;
   }
 
 
   .card-title {
     font-size: 20px;
+  }
+
+  .images-container{
+    width: 100%;
   }
 
   
