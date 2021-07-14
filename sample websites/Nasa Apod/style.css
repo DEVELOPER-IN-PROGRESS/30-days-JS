@@ -24,6 +24,8 @@ body {
 .loader{
   background: whitesmoke;
   width: 100vw;
+  position:fixed;
+  z-index: 100;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -47,10 +49,18 @@ body {
   right: 0;
   width: 100%;
   height: 60px;
-
+  z-index:-1 ;
 }
 
+.clickable{
+  color: dodgerblue;
+  cursor: pointer;
+  user-select: none;
+}
 
+.clickable:hover{
+  color: rgb(5, 86, 167);
+}
 /* Images Container */
 .images-container {
 
