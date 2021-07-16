@@ -21,13 +21,13 @@
               <span class="background"></span>
                <!-- Results nav -->
                <span class="navigation-items" id="resultsNav">
-                     <h3 class="clickable">Favourites</h3>
+                     <h3 class="clickable" onclick="updateDOM('favorites')">Favourites</h3>
                      <h3>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</h3>
-                     <h3 class="clickable">Load More</h3>
+                     <h3 class="clickable" onclick="getNasaPictures('results')">Load More</h3>
                </span>
                  <!-- Favourites Nav -->
                   <span class="navigation-items hidden" id="favouritesNav">
-                        <h3 class="clickable">Load More Nasa Images</h3>
+                        <h3 class="clickable" onclick="getNasaPictures('results')">Load More Nasa Images</h3>
                   </span>
          </div>
         <!-- Images Container -->
