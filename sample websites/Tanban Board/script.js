@@ -3,7 +3,7 @@ const saveItemBtns = document.querySelectorAll('.solid');
 const addItemContainers = document.querySelectorAll('.add-container');
 const addItems = document.querySelectorAll('.add-item');
 // Item Lists
-const itemLists = document.querySelectorAll('.drag-item-list');
+const listColumns = document.querySelectorAll('.drag-item-list');
 const backlogList = document.getElementById('backlog-list');
 const progressList = document.getElementById('progress-list');
 const completeList = document.getElementById('complete-list');
@@ -11,6 +11,7 @@ const onHoldList = document.getElementById('on-hold-list');
 
 // Items
 let updatedOnLoad = false ; 
+let draggedItem  ;
 
 
 // Initialize Arrays
@@ -21,6 +22,7 @@ let onHoldListArray = [];
 let listArrays = [] ;
 
 // Drag Functionality
+
 
 
 // Get Arrays from localStorage if available, set default values if not
@@ -58,7 +60,8 @@ function createItemEl(columnEl, column, item, index) {
   const listEl = document.createElement('li');
   listEl.classList.add('drag-item');
   listEl.textContent = item ;
-  
+  listEl.draggable = true ;
+  listEl.setAttribute('ondragstart' , 'drag(event)');
   columnEl.appendChild(listEl);
 
 }
@@ -96,6 +99,31 @@ function updateDOM() {
   // Run getSavedColumns only once, Update Local Storage
 
 
+}
+//when item is dragged
+function drag(e){
+     draggedItem = e.target ;
+     console.log(draggedItem);
+}
+
+
+//column allows  for item to drop 
+function allowDrop(e){
+  e.preventDefault();
+
+}
+
+//when item enters column
+function dragEnter(column){
+  listColumns[column].classList.add('over')
+}
+
+function drop(e){
+  e.preventDefault();
+  //remove background color padding
+  listColumns.forEach ( (column)=>{
+    column.classList.remove('over');
+  });
 }
 
 //onload 
