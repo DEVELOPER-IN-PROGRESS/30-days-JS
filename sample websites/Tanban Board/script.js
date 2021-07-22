@@ -12,6 +12,7 @@ const onHoldList = document.getElementById('on-hold-list');
 // Items
 let updatedOnLoad = false ; 
 let draggedItem  ;
+let currentColumn ; 
 
 
 // Initialize Arrays
@@ -97,14 +98,37 @@ function updateDOM() {
   });
 
   // Run getSavedColumns only once, Update Local Storage
-
+ updatedOnLoad = true ;
+ updateSavedColumns();
 
 }
+
+//Allow arrays to reflect drag  and drop items 
+ function rebuildArrays(){ 
+
+   backlogListArray = [] ;
+   for (let i = 0; i< backlogList.children.length; i++);{
+     backlogListArray.push(backlogList.children[i].textContent);
+   }
+   progressListArray = [] ;
+   for (let i = 0; i< progressList.children.length; i++);{
+    progressListArray.push(progressList.children[i].textContent);
+  }
+  completeListArray = [] ;
+  for (let i = 0; i< completeList.children.length; i++);{
+    completeListArray.push(completeList.children[i].textContent);
+  }
+  onHoldListArray = [] ;
+  for (let i = 0; i< onHoldList.children.length; i++);{
+    onHoldListArray.push(onHoldList.children[i].textContent);
+  }
+  updateDOM();
+ }
+
 //when item is dragged
 function drag(e){
      draggedItem = e.target ;
-     console.log(draggedItem);
-}
+ }
 
 
 //column allows  for item to drop 
@@ -115,7 +139,8 @@ function allowDrop(e){
 
 //when item enters column
 function dragEnter(column){
-  listColumns[column].classList.add('over')
+  listColumns[column].classList.add('over');
+  currentColumn = column ;  
 }
 
 function drop(e){
@@ -123,7 +148,11 @@ function drop(e){
   //remove background color padding
   listColumns.forEach ( (column)=>{
     column.classList.remove('over');
-  });
+  }); 
+     // Add item to column
+     const parent = listColumns[currentColumn];
+     parent.appendChild(draggedItem);
+  rebuildArrays();
 }
 
 //onload 
