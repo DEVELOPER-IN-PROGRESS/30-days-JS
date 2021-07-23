@@ -12,6 +12,7 @@ const onHoldList = document.getElementById('on-hold-list');
 // Items
 let updatedOnLoad = false ; 
 let draggedItem  ;
+let dragging = false ;
 let currentColumn ; 
 
 
@@ -121,11 +122,16 @@ function updateItem(id , column){
   console.log(selectedArray);
   const selectedColumnEl = listColumns[column].children ;
   console.log(selectedColumnEl[id].textContent);
-  if (!selectedColumnEl[id].textContent){
-    delete selectedArray[id]
+  if (!dragging){
+    if (!selectedColumnEl[id].textContent){
+      delete selectedArray[id];
+    }
+    else {
+      selectedArray[id]  = selectedArray[id].textContent ;
+    }
+    console.log(selectedColumnEl[id].textContent);
+    updateDOM();
   }
-  console.log(selectedColumnEl[id].textContent);
-  updateDOM();
 }
 
 
@@ -177,6 +183,7 @@ function hideInputBox(column){
 //when item is dragged
 function drag(e){
      draggedItem = e.target ;
+     dragging = true ;
  }
 
 
@@ -201,6 +208,8 @@ function drop(e){
      // Add item to column
      const parent = listColumns[currentColumn];
      parent.appendChild(draggedItem);
+     //Dragging complete 
+     dragging = false ;
   rebuildArrays();
 }
 
