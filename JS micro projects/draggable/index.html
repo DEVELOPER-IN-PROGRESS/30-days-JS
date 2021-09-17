@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docut</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+
+<link rel='stylesheet' href='https://bevacqua.github.io/dragula/dist/dragula.css'>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas1">
+
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Personalize</h5>
+            <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+    
+        </div>
+    
+        <div class="offcanvas-body">
+    
+            <div class="row">
+                <div id="left" class="col-12">
+                    <div class="card mb-0 mt-2" >
+                        <div class="card-body">
+                            <div class="d-flex align-items-start">
+                                <input type="checkbox" class="personalized-toggle" id="switchCulture" data-switch="none">
+                                <label for="switchCulture" data-on-label="" data-off-label=""></label>
+                                <div class="w-100 overflow-hidden">
+                                    <h5 class="ml-3">Culture</h5>
+                                    <p class="ml-3">Lorem ipsum dolor sit amet</p>
+    
+                                </div>
+                                <span aria-hidden="true" class="fa fa-ellipsis-v grab-icon"></span>
+    
+                            </div>
+                        </div>
+    
+                    </div> <!-- end card-body -->
+    
+                    <div class="card mb-0 mt-2" >
+                        <div class="card-body">
+                            <div class="d-flex align-items-start">
+                                <input type="checkbox" class="personalized-toggle" id="switchTechnology" data-switch="none">
+                                <label for="switchTechnology" data-on-label="" data-off-label=""></label>
+                                <div class="w-100 overflow-hidden">
+                                    <h5 class="ml-3">Technology</h5>
+                                    <p class="ml-3">Lorem ipsum dolor sit amet</p>
+    
+                                </div>
+                                <span aria-hidden="true" class="fa fa-ellipsis-v grab-icon"></span>
+                            </div>
+                        </div>
+    
+                    </div> <!-- end card-body -->
+
+                    <div class="card mb-0 mt-2" >
+                        <div class="card-body">
+                            <div class="d-flex align-items-start">
+                                <input type="checkbox" class="personalized-toggle" id="switchPracticeManagement"
+                                    data-switch="none">
+                                <label for="switchPracticeManagement" data-on-label="" data-off-label=""></label>
+                                <div class="w-100 overflow-hidden">
+                                    <h5 class="ml-3">Practice Management</h5>
+                                    <p class="ml-3">Lorem ipsum dolor sit amet</p>
+    
+                                </div>
+                                <span aria-hidden="true" class="fa fa-ellipsis-v grab-icon"></span>
+                            </div>
+                        </div>
+    
+                    </div> <!-- end card-body -->
+    
+                </div>
+                <div id="right"></div>
+    
+            </div>
+            <button type="button" class="btn btn-primary save-selection mt-4">Save</button>
+        </div>
+    </div>
+    
+    
+<nav class="py-2 personalize-button">
+    <div class="container d-flex flex-wrap">
+        <ul class="nav me-auto mt-2">
+            <h4>Personalized Info Kit</h4>
+        </ul>
+        <ul class="nav personalized-links">
+            <li class="nav-item"><a href class="nav-link  px-2 ">Share</a></li>
+            <li class="nav-item"><a href class="nav-link  px-2 " >Print</a></li>
+            <li class="nav-item"><a href="" class="nav-link  px-2" >Export as PDF</a>
+            </li>
+            <li class="nav-item " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas1"
+                aria-controls="offcanvasExample" style=" margin-top: 3px; "><a href="javascript:void(0)"
+                    class="nav-link link-dark px-2 btn btn-primary button-compact"><i class="bi bi-gear"></i>
+                    Personalize</a></li>
+        </ul>
+    </div>
+</nav>
+<script src='https://bevacqua.github.io/dragula/dist/dragula.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+
+<script>
+$(function() {
+  dragula([document.getElementById('left'), document.getElementById('right')]);
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+<style>
+    .card {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border-radius: .25rem;
+        border: none;
+        -webkit-box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
+        box-shadow: 0 0 35px 0 rgb(154 161 171 / 15%);
+        margin-bottom: 24px;
+    }
+
+    input[data-switch] {
+        display: none
+    }
+
+    input[data-switch]+label {
+        width: 40px;
+        height: 20px;
+        background-color: #f1f3fa;
+        background-image: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        border: 1px solid #dee2e6;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+        -webkit-transition: all .1s ease-in-out;
+        transition: all .1s ease-in-out
+    }
+
+    input[data-switch]+label:before {
+        color: #313a46;
+        content: attr(data-off-label);
+        display: block;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: .75rem;
+        line-height: 24px;
+        position: absolute;
+        right: 3px;
+        margin: 0 .21667rem;
+        top: 0;
+        text-align: center;
+        min-width: 1.66667rem;
+        overflow: hidden;
+        -webkit-transition: all .1s ease-in-out;
+        transition: all .1s ease-in-out
+    }
+
+    input[data-switch]+label:after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        background-color: #adb5bd;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 2rem;
+        height: 13px;
+        width: 13px;
+        top: 2.5px;
+        -webkit-transition: all .1s ease-in-out;
+        transition: all .1s ease-in-out
+    }
+
+    input[data-switch]:checked+label {
+        background-color: #727cf5
+    }
+
+    input[data-switch]:checked+label:before {
+        color: #fff;
+        content: attr(data-on-label);
+        right: auto;
+        left: 4px
+    }
+
+    input[data-switch]:checked+label:after {
+        left: 18px;
+        background-color: #f1f3fa
+    }
+
+    input[data-switch=bool]+label {
+        background-color: #fa5c7c
+    }
+
+    input:disabled+label {
+        opacity: .5;
+        cursor: default
+    }
+
+    
+
+
+
+
+    
+
+    .button-compact {
+        font-size: 12px;
+        line-height: 1.33337;
+        font-weight: 400;
+        letter-spacing: -.01em;
+        font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        min-width: 23px;
+        padding-left: 11px;
+        padding-right: 11px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-radius: 12px;
+        color: white;
+        background: #0071e3;
+    }
+
+
+</style>
+

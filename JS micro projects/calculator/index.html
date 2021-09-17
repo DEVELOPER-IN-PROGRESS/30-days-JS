@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div>
+        <form>
+            <p>What's your current residency?</p>
+            <select name="resident" id="resident" class="form-control" placeholder="Arizona resident"  autofocus>
+                <option value="" disabled selected hidden></option>
+                <option value="arizona resident">Arizona Resident</option>
+                <option value="non-resident">Non-Resident</option>
+            </select>
+            <p>What's your student status?</p>
+            <select name="degree" id="degree" class="form-control" placeholder="Select a degree type"  autofocus>
+                <option value=" " disabled selected hidden>Select a degree type</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="graduate">Graduate</option>
+            </select>
+            <p>Choose a program</p>
+            <select name="program" id="program" class="form-control" placeholder="Select a program"  autofocus>
+                <option value=" " disabled selected hidden>Select a program</option>
+                <option value="accountancy">Accountancy</option>
+            </select><br>
+            <button type="calculate" id="calc">Calculate</button>
+        </form>
+    </div>
+    <section class="ajax-section">
+        <div id='animation-container' class="animation-container" hidden>
+             <p>Be patient my friend</p>
+        </div>
+        <div class="outer-container" hidden>
+            <h3>Your estimated tuition for the 2021-2022 academic year<br>(<span><output></output></span> credit hours per semester) is:</h3>
+            <p>Tuition breakdown*</p>
+            <div>
+                <input type="range" min="1" max="18" class="slider" id="myRange">
+                <output></output>
+            </div>
+            
+            <button class="accordion">Fall 2021&nbsp;&nbsp;&nbsp;  <span id="total"></span> </button>
+                <div class="accordion-content">
+                    <p>Arizona Resident Online Tuition</p>
+                    <p>Undergraduate College Fee 4</p>
+                    <p>Student Initiated Fees</p>
+                    <p><b>Total Tuition & Fees</b><span id="totalfee"></span></p>
+                </div>
+            <button class="accordion">Spring 2022&nbsp;&nbsp;&nbsp; 
+            </button>
+                <div class="accordion-content">
+                    <p>Arizona Resident Online Tuition</p>
+                    <p>Undergraduate College Fee 4</p>
+                    <p>Student Initiated Fees</p>
+                    <p><b>Total Tuition & Fees</b><span id="totalfee"></span></p>
+                </div> 
+            <p>Academic Year Total</p>   
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
