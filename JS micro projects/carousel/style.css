@@ -1,0 +1,38 @@
+html {
+    font-family: sans-serif;
+    background: #ffc600;
+  }
+
+  .wrapper {
+    display: grid;
+    place-items: center;
+    place-content: center;
+  }
+
+  .main-box { 
+    display: block;
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    margin: 20px auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+  }
+
+
+  @media screen and (max-width : 576px){
+    .main-box {
+
+      width: 97vw;
+      height: 200px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 25px;
+    }
+
+  }
+
+
+
+  

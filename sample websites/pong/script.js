@@ -34,6 +34,19 @@ let computerScore = 0 ;
 
 
 
+// Change Mobile Settings
+if (isMobile.matches) {
+  speedY = -2;
+  speedX = speedY;
+  computerSpeed = 4;
+} else {
+  speedY = -1;
+  speedX = speedY;
+  computerSpeed = 3;
+}
+
+
+
 // Reset Ball to Center
 function ballReset() {
     ballX = width / 2;
@@ -119,6 +132,7 @@ function animate(){
     ballMove();
     ballBoundaries();
     computerAI();
+    window.requestAnimationFrame(animate);
 }
 
 function startGame(){
@@ -127,9 +141,8 @@ function startGame(){
     computerScore = 0 ;     
 
     createCanvas(); 
-    //animate(); 
-    setInterval( animate , 1000/60 );
-    canvas.addEventListener('mousemove' , (e) =>{
+    animate(); 
+     canvas.addEventListener('mousemove' , (e) =>{
         playerMoved = true ;
 
         paddleBottomX = e.clientX -canvasPosition - paddleDiff; 
