@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  margin: auto;
+  border: 2px solid black;
+  overflow: hidden;
+}
+.slides {
+  display:flex;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+}
+.slide {
+  width: 100%;
+    height: 300px;
+    flex: none;
+        display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-family: Arial;
+      font-size: 28px;
+}
+
+
+
+
+
+.one {
+	background: red;
+	
+  }
+  
+  .two {
+	background: blue;
+
+  }
+  
+  .three {
+	background: yellow;
+
+  }
