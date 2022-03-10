@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;400;600&family=Space+Mono:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+</head>
+<body>
+
+  <!-- main -->
+  <div class="container">
+    <div class="row valign-wrapper">
+      <div class="col l1 m1 s1 offset-l1 offset-m1">
+        <img src="https://image.flaticon.com/icons/svg/123/123223.svg" alt="">
+      </div>
+      <div class="col l9 m9 s9">
+
+        <h1 class="heading">Pomodoro</h1>
+      </div>
+
+      <div class="col l2 m2 s2 ">
+        <a id='modalTr' href="#modal1"><h5><i id="btnSettings" class="material-icons"></i></h5></a>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="card col s12 l10 offset-l1 card-container">
+
+        <div class="container">
+           <ul class="tabs tabs-fixed-width timer-tab">
+          <li class="tab col s3 l2"><a class="active" href="#pomodoro">pomodoro</a></li>
+          <li class="tab col s3 l2"><a href="#shortBreak">short break</a></li>
+          <li class="tab col s3 l2"><a href="#longBreak">long break</a></li>
+        </ul>
+        </div>
+        <div class="timer-box">
+          <div class="timer-inner-box">
+        <div class="spacer20"></div>
+        <div class="row main_timer">
+          <div class="center col s12">
+
+            <svg class="timer">
+              <circle class="progress-frame" cx="100" cy="100" r="96"></circle>
+              <circle class="progress" cx="100" cy="100" r="96"></circle>
+          </svg>
+          <div class="time">
+              <p><span id="timer" class="seconds timer-time"></span></p>
+              <a id="btnPlay" class="playIcon timer-button" onclick="">START</a>
+          </div>
+          </div>
+        </div>
+
+        <div class="spacer20"></div>
+
+        <div class="row" style="margin-top: 300px;">
+          <div class="col s2 offset-s4 center">
+
+          </div>
+          <div class="col s2 center ">
+            <i id="btnReset" class="material-icons"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img id=myBtn class="timer-setting-img" src="./assets/icon-settings.svg" alt="Settings" />
+
+
+      <div id="myModal" class="modal1  modal--mod">
+        
+        <!-- Modal content -->
+        <div class="modal-content ">
+          
+          <span class="close">&times;</span>
+          <p class="modal-heading">Settings</p>
+          <hr class="hr-class">
+          <p class="modal-text">Time(Minutes)</p>
+          <div class="modal-dropdown">
+            <div class="modal-pomodoro">
+              <p class="modal-dropdown-text">pomodoro</p>
+              <div class="btn-plus-minus">
+                <input id="quantity" class="number dim initialvalue dropdown" min="1" type="number" value="1">
+                <div>
+                <button class=" buttonclass minus-btn minus" aria-label="Decrease by one" >
+                  <i class="fa-solid fa-angle-up"></i>
+                </button>
+                <button class=" buttonclass plus-btn plus" aria-label="Increase by one">
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+              </div>
+            </div>
+            </div>
+            <div class="modal-shortbreak">
+              <p class="modal-dropdown-text">short break</p>
+              <div class="btn-plus-minus">
+                <input  id="quantity1" class="number dim initialvalue dropdown" min="0" max="5" type="number" value="1">
+                <div>
+                <button class=" buttonclass minus-btn minus minus-btn1" aria-label="Decrease by one" >
+                  <i class="fa-solid fa-angle-up"></i>
+                </button>
+                <button class=" buttonclass plus-btn plus plus-btn1" aria-label="Increase by one">
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+              </div>
+            </div>
+            </div>
+            <div class="modal-longbreak">
+              <p class="modal-dropdown-text">long break</p>
+              <div class="btn-plus-minus">
+                <input max="15" id="quantity2" class="number dim initialvalue dropdown" min="1" type="number" value="1">
+                <div>
+                <button class=" buttonclass minus-btn minus minus-btn2" aria-label="Decrease by one" >
+                  <i class="fa-solid fa-angle-up"></i>
+                </button>
+                <button class=" buttonclass plus-btn plus plus-btn2" aria-label="Increase by one">
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+              </div>
+            </div>
+            </div>
+        </div>
+
+          <hr class="modal-bar">
+
+          <div class="modal-div">
+            <p class="modal-text modal-text-pt">font</p>
+            <div class="modal-circle-div">
+              <div class="modal-circle modal-circle-font font-a  fontsss" onclick="switchFont(this,'ff1');" >Aa</div>
+              <div class="modal-circle modal-circle-font font-b fontsss" onclick="switchFont(this,'ff2');">Bb</div>
+              <div class="modal-circle modal-circle-font font-c  fontsss" onclick="switchFont(this,'ff3');">Cc</div>
+            </div>
+          </div>
+
+          <hr class="modal-bar">
+
+          <div class="modal-div">
+            <p class="modal-text modal-text-pt" >color</p>
+            <div class="modal-circle-div modal-circle-div-color">
+              <div class="modal-circle color-red ticktick" onclick="switchColor(this,'red');"><i class="fa-solid fa-check"></i></div>
+              <div class="modal-circle color-green ticktick" onclick="switchColor(this,'green');"></div>
+              <div class="modal-circle color-purple ticktick" onclick="switchColor(this,'purple');"></div>
+            </div>
+          </div>
+          <button class="button-apply" onclick="setAttributes();">Apply</button>
+        </div>
+
+      </div>
+
+
+
+
+        <div class="container">
+
+          <div class="row">
+            <div class="col s6">
+              <h6 >Checklist</h6>
+            </div>
+            <div class="col s6 right-align">
+              <h6><a id="clear" class="red-text" href="#">Clear All</a></h6>
+            </div>
+            <div class="divider"></div>
+          </div>
+          <div class="row">
+            <ul id="checklist" class="collection">
+
+            </ul>
+            <h6 id = "newTask" class="col s12 "><a class="red-text" href="#">Enter task name</a></h6>
+
+            <form id="newTaskForm" action="" class='hidden'>
+              <div class="row">
+
+                <div class="input-field col s12  ">
+                  <input placeholder="Enter task name" id="newTaskInput" type="text" class="validate" autofocus >
+                  <label for="newTaskInput"></label>
+                </div>
+
+
+              </div>
+            </form>
+
+          </div>
+
+
+         <div class="spacer20"></div>
+        </div>
+
+        <!-- end of card -->
+      </div>
+
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</body>
+</html>
