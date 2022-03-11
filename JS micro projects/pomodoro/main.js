@@ -3,8 +3,17 @@ let isStartClicked = false ;
 let root = document.querySelector(':root');
 let color = 'red' ;
 let font = 'ff1' ;
+let elapsed = 0 ;
 
 let quantity1 = document.getElementById('quantity') ;
+
+let timeSettings={
+  pomodoro: 25,
+  short: 5,
+  long: 15 ,
+} ;
+
+let inputs = document.querySelectorAll('.initialvalue');
 
 var newTaskInput = document.getElementById('newTaskInput');
 var timer = document.getElementById('timer');
@@ -17,6 +26,8 @@ var newTaskBtn = document.getElementById("newTask");
 var tabs = document.getElementsByClassName("tab");
 var timertype = '25:00';
 var pomodoro = 25 * 60;
+let ring = document.querySelector('.outerring');
+
 var audio = new Audio('http://soundbible.com/mp3/analog-watch-alarm_daniel-simion.mp3');
 var Cd;
 var elem,instance;
@@ -41,6 +52,52 @@ function switchFont(e,fonts){
 function setAttributes(){
   root.style.setProperty('--currentcolor', `var(--${color})`);
   root.style.setProperty('--currentfont' , `var(--${font})`);
+
+  Timer.stop();
+
+  let ip1 = document.getElementById('quantity').value ;
+  let ip2 = document.getElementById('quantity1').value ;
+  let ip3 = document.getElementById('quantity2').value ;
+
+
+  let active=   document.getElementsByClassName('active')[0].innerText ;
+
+  switch(active){
+      case 'long break':
+              timer.innerText = ip3 < 10 ? `0${ip3}:00` : `${ip3}:00` ;
+              pomodoro = secondsLeft = ip3 * 60;
+              console.log({pomodoro});
+              elapsed = 0 ;
+              break ;
+
+      case 'short break':
+        timer.innerText = ip2 < 10 ? `0${ip2}:00` : `${ip2}:00` ;
+        pomodoro = secondsLeft = ip2 * 60;
+        console.log({pomodoro});
+        elapsed = 0 ;
+        break ;
+
+      case 'pomodoro':
+          timer.innerText = ip1 < 10 ? `0${ip1}:00` : `${ip1}:00` ;
+          pomodoro = secondsLeft = ip1 * 60;
+          console.log({pomodoro});
+          elapsed = 0 ;
+          break ;
+  }
+
+  timeSettings.pomodoro = Number(ip1) ;
+  timeSettings.short = Number(ip2) ;
+  timeSettings.long = Number(ip3)  ;
+
+  console.log({timeSettings})
+
+  if(play.innerText== 'PAUSE'){
+    startTimer();
+    isStartClicked = true ;
+  }
+
+  ring.style.background = `conic-gradient(#161932 0deg 360deg)` ;
+//Timer.start();
   modal.style.display = "none";
 }
 
@@ -103,22 +160,33 @@ for (var i = 0; i< tabs.length; i++){
       case "#pomodoro":
         isStartClicked = false;
         play.innerText = 'START' ;
-        timertype = "25:00";
-        pomodoro = secondsLeft = 25 * 60;
+        elapsed = 0;
+        ring.style.background = `conic-gradient(#161932 0deg 360deg)` ;
+        timertype = (timeSettings.pomodoro <10) ? `0${timeSettings.pomodoro}:00` :  `${timeSettings.pomodoro}:00`;
+        console.log( timertype);
+        pomodoro = secondsLeft = timeSettings.pomodoro * 60;
+        console.log({pomodoro});
         Timer.stop();
         break;
       case "#shortBreak":
         isStartClicked = false;
         play.innerText = 'START' ;
-        timertype = "5:00";
-        pomodoro = secondsLeft = 5 * 60;
+        elapsed = 0;
+        ring.style.background = `conic-gradient(#161932 0deg 360deg)` ;
+        timertype = (timeSettings.short <10) ? `0${timeSettings.short}:00` :  `${timeSettings.short}:00`;
+        pomodoro = secondsLeft = timeSettings.short * 60;
+        console.log({pomodoro});
+
         Timer.stop();
         break;
       case "#longBreak":
         isStartClicked = false;
+        elapsed = 0;
         play.innerText = 'START' ;
-        timertype = "15:00";
-        pomodoro = secondsLeft = 15 * 60;
+        ring.style.background = `conic-gradient(#161932 0deg 360deg)` ;
+        timertype = (timeSettings.long <10) ? `0${timeSettings.long}:00` :  `${timeSettings.long}:00`;
+        pomodoro = secondsLeft = timeSettings.long * 60;
+        console.log({pomodoro});
         Timer.stop();
         break;
       default:
@@ -133,7 +201,7 @@ instance.open();
   audio.pause()
 });
 
-play.addEventListener('click', function(e){
+function startTimer(){
   audio.pause()
   // color play button Red
   if (Timer.isRunning !== true){
@@ -150,8 +218,9 @@ play.addEventListener('click', function(e){
   } else{
     Timer.stop();
   }
+}
 
-});
+play.addEventListener('click', startTimer);
 
 reset.addEventListener('click', function(e){
   audio.pause()
@@ -214,11 +283,8 @@ function changePlayClass(){
         play.classList.add('playIcon');
       }
     }
-
   }
-
 }
-
 
 //new countdown function
 function CountDown() {
@@ -227,11 +293,19 @@ function CountDown() {
 
 
   function display(seconds) {
+    //console.log({pomodoro});
+    elapsed++;
+    console.log({elapsed});
+    let slice = (elapsed/pomodoro)*360;
+    console.log(slice);
+
+    ring.style.background = `conic-gradient(var(--currentcolor) ${slice}deg , #161932 ${slice}deg 360deg )`;
+
     const minutes = Math.floor(seconds / 60);
     var rSeconds = seconds % 60;
     rSeconds = rSeconds < 10 ? '0'+rSeconds : rSeconds;
 
-    timer.innerHTML = `${minutes}:${rSeconds}`;
+    timer.innerText = minutes< 10 ? `0${minutes}:${rSeconds}` :`${minutes}:${rSeconds}`;
     if(minutes == 0 && rSeconds == 0 ){
       play.innerText = 'RESTART' ;
       isStartClicked = false ;
@@ -451,16 +525,19 @@ document.querySelector(".minus-btn2").addEventListener("click", function () {
     valueCount = 1
   }
   document.getElementById("quantity2").value = valueCount;
-
-
 })
 
 play.addEventListener('click' , runTimer)
 
-
-quantity1.addEventListener('input', ()=>{
-  console.log(quantity1.value)
+inputs.forEach( (e)=> {
+  e.addEventListener('input', (k) =>{
+    console.log(k);
+  })
 })
+
+// quantity1.addEventListener('input', ()=>{
+//   console.log(quantity1.value)
+// })
 // document.querySelector(".color-red").addEventListener("click", function () {
 //   document.getElementsByClassName("active").style.backgroundColor = "black";
 // })

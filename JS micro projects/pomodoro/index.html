@@ -48,14 +48,17 @@
         </div>
         <div class="timer-box">
           <div class="timer-inner-box">
+            <div class="outerring">
+                <div class="progress-frame">
+
+                </div>
+            </div>
+           
         <div class="spacer20"></div>
         <div class="row main_timer">
           <div class="center col s12">
 
-            <svg class="timer">
-              <circle class="progress-frame" cx="100" cy="100" r="96"></circle>
-              <circle class="progress" cx="100" cy="100" r="96"></circle>
-          </svg>
+
           <div class="time">
               <p><span id="timer" class="seconds timer-time"></span></p>
               <a id="btnPlay" class="playIcon timer-button" onclick="">START</a>
@@ -79,10 +82,10 @@
 
 
       <div id="myModal" class="modal1  modal--mod">
-        
+
         <!-- Modal content -->
         <div class="modal-content ">
-          
+
           <span class="close">&times;</span>
           <p class="modal-heading">Settings</p>
           <hr class="hr-class">
@@ -91,7 +94,7 @@
             <div class="modal-pomodoro">
               <p class="modal-dropdown-text">pomodoro</p>
               <div class="btn-plus-minus">
-                <input id="quantity" class="number dim initialvalue dropdown" min="1" type="number" value="1">
+                <input id="quantity" class="number dim initialvalue dropdown" min="1" type="number" value="2"/>
                 <div>
                 <button class=" buttonclass minus-btn minus" aria-label="Decrease by one" >
                   <i class="fa-solid fa-angle-up"></i>
@@ -105,7 +108,7 @@
             <div class="modal-shortbreak">
               <p class="modal-dropdown-text">short break</p>
               <div class="btn-plus-minus">
-                <input  id="quantity1" class="number dim initialvalue dropdown" min="0" max="5" type="number" value="1">
+                <input  id="quantity1" class="number dim initialvalue dropdown" min="0" max="5" type="number" value="2">
                 <div>
                 <button class=" buttonclass minus-btn minus minus-btn1" aria-label="Decrease by one" >
                   <i class="fa-solid fa-angle-up"></i>
@@ -119,7 +122,7 @@
             <div class="modal-longbreak">
               <p class="modal-dropdown-text">long break</p>
               <div class="btn-plus-minus">
-                <input max="15" id="quantity2" class="number dim initialvalue dropdown" min="1" type="number" value="1">
+                <input max="15" id="quantity2" class="number dim initialvalue dropdown" min="1" type="number" value="2"/>
                 <div>
                 <button class=" buttonclass minus-btn minus minus-btn2" aria-label="Decrease by one" >
                   <i class="fa-solid fa-angle-up"></i>

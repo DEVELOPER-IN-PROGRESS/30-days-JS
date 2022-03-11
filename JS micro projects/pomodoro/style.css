@@ -124,6 +124,7 @@ body{
   height: 366px;
   background: #161932;
   border-radius: 50%;
+  position: relative;
 }
 .timer-time{
 height: 132px;
@@ -329,8 +330,17 @@ ul.timer-tab li:first-child {
 
 
 .progress-frame{
-  display: none;
+  height: 85%;
+  width: 85%;
+  background-color: #0E112A;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
+
+
   #btnSettings {
     color: black;
   }
@@ -349,9 +359,19 @@ ul.timer-tab li:first-child {
   #timer{
     font-weight: 600;
   }
-  .timer{
-    display: none;
+  .outerring{
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    height: 88%;
+    width: 88%;
+    background-color: #161932;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
+
   .spacer20{
     display: block;
     height: 15em;
@@ -361,7 +381,7 @@ ul.timer-tab li:first-child {
   }
   .hr-class{
     position: absolute;
-    top: 21%;
+    top: 18%;
     width: 538px;
     left: 0%;
   }
@@ -385,7 +405,7 @@ ul.timer-tab li:first-child {
     display: none;
   }
   .modal-text{
-    padding-top: 60px;
+    padding-top: 40px;
     margin: 0;
   }
   .modal-dropdown{
@@ -435,7 +455,16 @@ margin: 0;
   stroke: white;
   stroke-width: 5px;
   stroke-linecap: round;
+  cy: 50%;
+  cx:50%;
   transition: stroke-dashoffset 1s;
+}
+
+.frame2{
+  cx:50% ;
+  cy:50% ;
+  r:153px;
+  fill: #161932;
 }
 
 .main_timer .time {
