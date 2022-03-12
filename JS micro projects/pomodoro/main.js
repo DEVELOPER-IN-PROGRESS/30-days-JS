@@ -6,6 +6,8 @@ let font = 'ff1' ;
 let elapsed = 0 ;
 
 let quantity1 = document.getElementById('quantity') ;
+let parent = document.getElementById('parent');
+let child = document.getElementById('child');
 
 let timeSettings={
   pomodoro: 25,
@@ -148,46 +150,41 @@ checklist.addEventListener('click',function(e){
   list.check(this.n,this.c);
 });
 
-
 timer.innerHTML = timertype;
 
-//event listener
+function sameProperties(){
+  isStartClicked = false;
+  play.innerText = 'START';
+  elapsed = 0;
+  parent.style.display = 'none';
+  child.style.display = 'none';
+  parent.style.transform = `rotate(0deg)`;
+  ring.style.background = `conic-gradient(#161932 0deg 360deg)`;
+}
+
 // tabs click event listeners
 for (var i = 0; i< tabs.length; i++){
   tabs[i].addEventListener('click', function(e){
      audio.pause()
     switch(e.target.hash) {
       case "#pomodoro":
-        isStartClicked = false;
-        play.innerText = 'START' ;
-        elapsed = 0;
-        ring.style.background = `conic-gradient(#161932 0deg 360deg)` ;
+       sameProperties();
         timertype = (timeSettings.pomodoro <10) ? `0${timeSettings.pomodoro}:00` :  `${timeSettings.pomodoro}:00`;
-        console.log( timertype);
-        pomodoro = secondsLeft = timeSettings.pomodoro * 60;
-        console.log({pomodoro});
-        Timer.stop();
+         pomodoro = secondsLeft = timeSettings.pomodoro * 60;
+         Timer.stop();
         break;
       case "#shortBreak":
-        isStartClicked = false;
-        play.innerText = 'START' ;
-        elapsed = 0;
-        ring.style.background = `conic-gradient(#161932 0deg 360deg)` ;
+        sameProperties();
         timertype = (timeSettings.short <10) ? `0${timeSettings.short}:00` :  `${timeSettings.short}:00`;
         pomodoro = secondsLeft = timeSettings.short * 60;
-        console.log({pomodoro});
 
         Timer.stop();
         break;
       case "#longBreak":
-        isStartClicked = false;
-        elapsed = 0;
-        play.innerText = 'START' ;
-        ring.style.background = `conic-gradient(#161932 0deg 360deg)` ;
+        sameProperties();
         timertype = (timeSettings.long <10) ? `0${timeSettings.long}:00` :  `${timeSettings.long}:00`;
         pomodoro = secondsLeft = timeSettings.long * 60;
-        console.log({pomodoro});
-        Timer.stop();
+         Timer.stop();
         break;
       default:
         timer.innerHTML = "25:00";
@@ -204,6 +201,8 @@ instance.open();
 function startTimer(){
   audio.pause()
   // color play button Red
+  parent.style.display = 'block';
+  child.style.display = 'block';
   if (Timer.isRunning !== true){
     if(secondsLeft === undefined ){
      //
@@ -300,6 +299,7 @@ function CountDown() {
     console.log(slice);
 
     ring.style.background = `conic-gradient(var(--currentcolor) ${slice}deg , #161932 ${slice}deg 360deg )`;
+    parent.style.transform = `rotate(${slice}deg)`;
 
     const minutes = Math.floor(seconds / 60);
     var rSeconds = seconds % 60;
@@ -516,28 +516,4 @@ document.querySelector(".plus-btn2").addEventListener("click", function () {
   document.getElementById("quantity2").value = valueCount;
 })
 
-
-document.querySelector(".minus-btn2").addEventListener("click", function () {
-  valueCount = document.getElementById("quantity2").value;
-  valueCount--;
-  console.log(valueCount,'plus brnnn')
-  if (valueCount <= 1) {
-    valueCount = 1
-  }
-  document.getElementById("quantity2").value = valueCount;
-})
-
 play.addEventListener('click' , runTimer)
-
-inputs.forEach( (e)=> {
-  e.addEventListener('input', (k) =>{
-    console.log(k);
-  })
-})
-
-// quantity1.addEventListener('input', ()=>{
-//   console.log(quantity1.value)
-// })
-// document.querySelector(".color-red").addEventListener("click", function () {
-//   document.getElementsByClassName("active").style.backgroundColor = "black";
-// })
